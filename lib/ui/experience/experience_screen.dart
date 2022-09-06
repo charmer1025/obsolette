@@ -25,7 +25,6 @@ class ExperienceScreenState extends State<ExperienceScreen> {
   List<String> sorts = [];
   Future<Map<String, dynamic>> loadingData() async {
     dialogues = await _service.getExperience(language);
-    print(dialogues["result"][1]);
     return dialogues;
   }
 
@@ -54,7 +53,7 @@ class ExperienceScreenState extends State<ExperienceScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: 10,
+                        height: mq.height * 0.3,
                       ),
                       kLoadingWidget(context),
                     ],
@@ -72,7 +71,7 @@ class ExperienceScreenState extends State<ExperienceScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: 10,
+                          height: mq.height * 0.3,
                         ),
                         kLoadingWidget(context),
                       ],
@@ -104,28 +103,33 @@ class ExperienceScreenState extends State<ExperienceScreen> {
                             SizedBox(
                               height: 10,
                             ),
-                            Column(
-                                children: values
-                                    .map(
-                                      (i) => new GestureDetector(
-                                        onTap: () {
-                                          // Navigator.push(
-                                          //   context,
-                                          //   MaterialPageRoute(
-                                          //     builder: (context) => StoryScreen(
-                                          //         keyword: i["a"],
-                                          //         language: language),
-                                          //   ),
-                                          // );
-                                        },
-                                        child: Text(
-                                          i["titre"],
-                                          style: TextStyle(
-                                              color: btnColor, fontSize: 20),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: values
+                                      .map(
+                                        (i) => new GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    DialogScreen(
+                                                        storyNo: i["did"],
+                                                        language: language),
+                                              ),
+                                            );
+                                          },
+                                          child: Text(
+                                            i["titre"],
+                                            style: TextStyle(
+                                                color: btnColor, fontSize: 20),
+                                          ),
                                         ),
-                                      ),
-                                    )
-                                    .toList()),
+                                      )
+                                      .toList()),
+                            ),
                             SizedBox(
                               height: 10,
                             ),

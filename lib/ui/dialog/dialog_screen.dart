@@ -134,12 +134,12 @@ class DialogScreenState extends State<DialogScreen> {
                             ? dialog["titre"]
                             : multiLanguage[languageArr[language]]!["no_title"],
                         style: TextStyle(
-                          fontSize: 22,
+                          fontSize: 20,
                           color: textColor,
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 15,
                       ),
                       Text(
                         (dialog["chapeau"] != "")
@@ -147,7 +147,7 @@ class DialogScreenState extends State<DialogScreen> {
                             : multiLanguage[languageArr[language]]!["no_hat"],
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16,
                           color: textColor,
                         ),
                       ),
